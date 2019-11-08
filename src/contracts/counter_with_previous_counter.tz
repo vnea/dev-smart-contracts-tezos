@@ -1,0 +1,24 @@
+# This contract is an update of the counter.tz contract.
+# It now keep the previous counter before each update.
+# It has two entrypoints :
+#  - increaseCounterBy : storage.previousCounter = storage.counter, storage.counter = storage.counter + value
+#  - decreaseCounterBy : storage.previousCounter = storage.counter, storage.counter = storage.counter - value
+parameter (or (int %increaseCounterBy) (int %decreaseCounterBy));
+storage (pair (int %counter) (int %previousCounter));
+code {
+       UNPAIR;
+       SWAP;
+       CAR @newPreviousCounter;
+       SWAP;
+       DIP { DUP @currentCounter; };
+       IF_LEFT {
+                 ADD @newCounter;
+               }
+               {
+                 SWAP;
+                 SUB @newCounter;
+               };
+       PAIR;
+       NIL operation;
+       PAIR;
+     }

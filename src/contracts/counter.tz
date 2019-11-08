@@ -1,6 +1,6 @@
 # This contract contains an integer in the storage (= a counter).
 # It has two entrypoints :
-#  - increaseCounterBy : storage = storage - value
+#  - increaseCounterBy : storage = storage + value
 #  - decreaseCounterBy : storage = storage - value
 parameter (or (int %increaseCounterBy) (int %decreaseCounterBy));
 storage int;
