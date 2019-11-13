@@ -22,7 +22,7 @@ class CounterContractTest(TestCase):
         # Then
         self.assertEqual(result.storage, 5)
 
-    def atest_increaseCounterBy_negative_value_should_throw_exception(self):
+    def test_increaseCounterBy_negative_value_should_throw_exception(self):
         try:
             # Given
             increase_value = -1
@@ -35,7 +35,7 @@ class CounterContractTest(TestCase):
 
         self.fail("This fail should not happen.")
 
-    def atest_decreaseCounterBy_should_decrease_counter_in_storage_by_decrease_value(self):
+    def test_decreaseCounterBy_should_decrease_counter_in_storage_by_decrease_value(self):
         # Given
         decrease_value = 5
 
