@@ -8,7 +8,7 @@ class CounterContractTest(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        contract_path = join(dirname(dirname(__file__)), "contracts/counter.tz")
+        contract_path = join(dirname(dirname(__file__)), "src/contracts/counter.tz")
         cls.contract = ContractInterface.create_from(contract_path)
 
     def test_increaseCounterBy_should_increase_counter_in_storage_by_increase_value(self):

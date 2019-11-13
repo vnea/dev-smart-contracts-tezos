@@ -9,7 +9,7 @@ class CounterContractTest(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        contract_path = join(dirname(dirname(__file__)), "contracts/counter_with_previous_counter.tz")
+        contract_path = join(dirname(dirname(__file__)), "src/contracts/counter_with_previous_counter.tz")
         cls.contract = ContractInterface.create_from(contract_path)
 
     def test_increaseCounterBy_should_update_previous_counter_with_initial_counter(self):
