@@ -1,0 +1,25 @@
+# This contract contains an integer in the storage (= a counter).
+# It has two entrypoints :
+#  - increaseCounterBy : storage = storage + value, throw en error if value is not > 0
+#  - decreaseCounterBy : storage = storage - value
+parameter (or (int %increaseCounterBy) (int %decreaseCounterBy));
+storage int;
+code {
+       UNPAIR;
+       IF_LEFT {
+                 DUP;
+                 SWAP;
+                 PUSH int 0;
+                 IFCMPGE {
+                           PUSH string "value should be > 0";
+                           FAILWITH;
+                         }
+                         { ADD }
+               }
+               {
+                 SWAP;
+                 SUB
+               };
+       NIL operation;
+       PAIR;
+     }
